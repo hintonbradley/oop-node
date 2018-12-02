@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/app/styles/main.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="text-center">Object Types</h1>
+    <div class="container">
+        <!-- <div class="row text-center">
+            <div class="col-md-4">
+                <p class="text-center">The simplest way to create an object is using an object literal notation</p>
+            </div>
+            <div class="col-md-8">
+                <p class="text-center">To create multiple objects with the same structure and behaviuor (methods), use a factory or a constructor.</p>
+            </div>
+        </div> -->
+        <div class="row">
+            <div class="col-md-4 bkgrd-blue">
+                <p class="text-center">The simplest way to create an object is using an object literal notation</p>
+                <h3 class="text-center">Object Literal</h3>
+                <div class="code-wrapper">
+                    <code>
+                        const circle1 = {
+                            <br>&nbsp;&nbsp;radius: 1,
+                            <br>&nbsp;&nbsp;location: {
+                                <br>&nbsp;&nbsp;&nbsp;&nbsp;x: 1,
+                                <br>&nbsp;&nbsp;&nbsp;&nbsp;y: 1
+                            <br>&nbsp;&nbsp;},
+                            <br>&nbsp;&nbsp;show: function () {
+                                <br>&nbsp;&nbsp;&nbsp;&nbsp;console.log('Showing an Object Literal Notation circle');
+                            <br>&nbsp;&nbsp;}
+                        <br>};
+                        <!-- <br>circle1.show();
+                        <br>=> Showing an Object Literal Notation circle -->
+                    </code> 
+                    <hr>
+                    <p>circle1.show();
+                        <br>&nbsp;&nbsp;=> "Showing an Object Literal Notation circle"
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-8 bkgrd-pink ">
+                <p class="text-center">To create multiple objects with the same structure and behavior (methods), use a factory or a constructor.</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3 class="text-center">Factory Object</h3>
+                        <div class="code-wrapper">
+                            <code>
+                                function createCircle (radius) {
+                                    <br>&nbsp;&nbsp;return {
+                                        <br>&nbsp;&nbsp;&nbsp;&nbsp;radius,
+                                        <br>&nbsp;&nbsp;&nbsp;&nbsp;draw: function() {
+                                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log('Drawing a Factory instansiated circle');
+                                    <br>&nbsp;&nbsp;&nbsp;&nbsp;}
+                                    <br>&nbsp;&nbsp;}
+                                <br>};
+                                <!-- <br>const circle2 = createCircle(1);
+                                <br>circle2.draw();
+                                <br>=> Drawing a Factory instantiated circle -->
+                            </code>
+                            <hr>
+                            <p>const circle2 = createCircle(1);
+                                <br>circle2.draw();
+                                <br>&nbsp;&nbsp;=> "Drawing a Factory instantiated circle"
+                            </p>
+                        </div>
+                        <div>
+                            <p>When an object is created using a factory, the following things happen:</p>
+                            <div class="mt-40"></div>
+                            <ul>
+                                <li>The built in Javascript contructor function is used to create the object</li>
+                                <li class='no-point mt-40' ></li>
+                            </ul>
+                        </div>
+                        <hr>
+                        <div>
+                            &nbsp;&nbsp;circle2.constructor
+                            <br>&nbsp;&nbsp;(built in JS object constructor)
+                            <br>&nbsp;&nbsp;=> ƒ Object() { [native code] }
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <!-- <div class="col-md-4"> -->
+                        <h3 class="text-center">Constructor Object</h3>
+                        <div class="code-wrapper">
+                            <code>
+                                function Circle(radius) {
+                                    <br>&nbsp;&nbsp;console.log('Inside any instance of a constructor, "this" is: ', this);
+                                    <br>&nbsp;&nbsp;this.radius = radius;
+                                    <br>&nbsp;&nbsp;this.create = function() {
+                                        <br>&nbsp;&nbsp;&nbsp;&nbsp;console.log('Creating an instance of a circle from a constructor.');
+                                        <br>&nbsp;&nbsp;}
+                                        <!-- <br>&nbsp;&nbsp;this.showThis = function () {
+                                            <br>&nbsp;&nbsp;&nbsp;&nbsp;console.log('this is:', this)
+                                    <br>&nbsp;&nbsp;} -->
+                                <br>}
+                                <!-- <br>const circle3 = new Circle(1);
+                                <br>circle3.create(); -->
+                            </code>
+                            <hr>
+                            <p>const circle3 = new Circle(1);
+                                <br>circle3.create();
+                                <br>&nbsp;&nbsp;=> "Creating an instance of a circle from a constructor."
+                            </p>
+                        </div>
+                        <div>
+                            <p>When the 'new' keyword is used to create an object from a constructor, the following things happen:</p>
+                            <ul>
+                                <li>An empty object is created</li>
+                                <li>The 'this' keyword is bound to this new object</li>
+                                <li>The new object is returned</li>
+                            </ul>
+                        </div>
+                        <hr>
+                        <!-- <div> -->
+                            &nbsp;&nbsp;circle3.constructor
+                            <br>&nbsp;&nbsp;(the above Circle constructor)
+                            <br>&nbsp;&nbsp;=> ƒ Circle(radius) {...}
+                        <!-- </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/app/js/types.js"></script>
+</body>
+</html>

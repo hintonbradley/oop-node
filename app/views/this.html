@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/app/styles/main.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="text-center">'this' keyword</h1>
+    <p class="text-center">The JavaScript 'this' keyword refers to the object it belongs to.
+    <br>In the example below, the first <span class="blue">'this'</span> refers to the john object because that object is the parent (owner) object. 
+    <br>However the second <span class="violet">'this'</span> refers to the sister object since that is the parent (owner) object.</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="code-wrapper">
+                        <code>
+                            let <span class="blue">john  = {</span>
+                                <br>&nbsp;&nbsp;name: 'John Peterson',
+                                <br>&nbsp;&nbsp;age: 29,
+                                <br>&nbsp;&nbsp;logThis:</span> function () {
+                                    <br>&nbsp;&nbsp;&nbsp;&nbsp;console.log('Inside the john object, "this" refers to: ', <span class="blue">this</span>)
+                                <br>&nbsp;&nbsp;},
+                                <br>&nbsp;&nbsp;<span class="violet">sister: { </span>
+                                <br>&nbsp;&nbsp;&nbsp;&nbsp;name: 'Sue Peterson',
+                                <br>&nbsp;&nbsp;&nbsp;&nbsp;age: 26,
+                                <br>&nbsp;&nbsp;&nbsp;&nbsp;logThis: function () {
+                                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log('Inside the john object, "this" refers to: ', <span class="violet">this</span>)
+                                <br>&nbsp;&nbsp;&nbsp;&nbsp;}
+                                <br>&nbsp;&nbsp;<span class="violet">}</span>
+                            <br><span class="blue">};</span>
+                        </code>
+                    </div>
+                    <p><span class="blue">john.logThis</span>();<br>=> <span class="blue">john {...}</span></p>
+                    <p><span class="blue">john</span>.<span class="violet">sister.logThis</span>();<br>=> <span class="violet">sister {...}</span></p>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+
+
+    <p class="text-center">In an object method, this refers to the "owner" of the method.
+        <br>In the Burger King example below, 'this' refers to the burgerKing object.
+        <br>The burgerKing object is the owner of the placeOrder method.</p>
+        <p class="text-center">However, when the same method is used in the McDonalds objct, 'this' reference changes to the mcDonalds object</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="code-wrapper">
+                    <code>
+                        let <span class="orange">burgerKing</span> = {
+                            <br>&nbsp;&nbsp;food: 'Whopper',
+                            <span class="orange"><br>&nbsp;&nbsp;placeOrder:</span> function () {
+                                <br>&nbsp;&nbsp;&nbsp;&nbsp;console.log("I'll have a " + this.food)
+                            <br>&nbsp;&nbsp;}
+                        <br>};
+                    </code>
+                </div>
+                <div class="text-center">
+                    <p><span class="orange">burgerKing.placeOrder</span>();</p>
+                    <p>=> "I'll have a Whopper"</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="code-wrapper">
+                    <code>
+                        let <span class="violet">mcDonalds</span> = {
+                            <br>&nbsp;&nbsp;food: 'Big Mac',
+                            <br>&nbsp;&nbsp;<span class="violet">orderFood</span>:  <span class="orange">burgerKing.placeOrder</span>
+                            <br>&nbsp;&nbsp;}
+                        <br>};
+                    </code>
+                </div>
+                <div class="text-center">
+                    <p><span class="violet">mcDonalds.orderFood</span>();</p>
+                    <p>=> "I'll have a Big Mac"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/app/js/this.js"></script>
+</body>
+</html>

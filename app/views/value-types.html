@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/app/styles/main.css">
+    <link rel="stylesheet" href="/app/styles/value-types.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 plr-60 panel panel-default">
+                <div class="value-box">
+                    <div class="title text-center bkgrd-blue">Primitive Types</div>
+                    <ul class="panel-content">
+                        <li>Strings</li>
+                        <li>Numbers</li>
+                        <li>Booleans</li>
+                        <li>Symbols</li>
+                        <li>Undefined</li>
+                        <li>Null</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 plr-60">
+                <div class="value-box">
+                    <div class="title text-center bkgrd-pink">Reference Types</div>
+                    <ul>
+                        <li>Objects</li>
+                        <li>Arrays</li>
+                        <li>Functions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="code-wrapper">
+            <code>
+                let myObj = {value: <span class="violet">10</span>}
+                <br>
+                <br>function increase (myObj) {
+                    <br>&nbsp;&nbsp;myObj.value++;
+                <br>}
+                <br>
+                <br>increase(myObj);
+                <br>
+                <br>console.log(myObj.value)
+                <br>=> <span class="violet">11</span>
+            </code>
+        </div>
+        <p>In this case the original object's value will increase because you are passing the object into the function and therefore passing the reference to the object. This would not be the case with primitive value types (see below).</p>
+        div class="code-wrapper">
+        <div class="code-wrapper">
+            <code>
+                let myNumber = <span class="red">20</span>
+                <br>
+                <br>function increaseNum (myNumber) {
+                    <br>&nbsp;&nbsp;myNumber++;
+                <br>}
+                <br>
+                <br>increaseNum(myNumber);
+                <br>
+                <br>console.log(myNumber)
+                <br>=> <span class="red">20</span>
+            </code>
+        </div>
+    </div>
+    <script src="/app/js/value-types.js"></script>
+</body>
+</html>

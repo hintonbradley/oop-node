@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/app/styles/main.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="text-center">Constructors</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-center">A constructor is a special method for creating and initializing an object created within a class..</p>
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- <div class="col-md-4"> -->
+                        <h3 class="text-center">Constructor Object</h3>
+                        <div class="code-wrapper">
+                            <code>
+                                function Car(make, model) {
+                                    <span class="blue">
+                                    <br>&nbsp;&nbsp;// Public members 
+                                    <br>&nbsp;&nbsp;this.make = make;
+                                    <br>&nbsp;&nbsp;this.model = model;
+                                    <br>&nbsp;&nbsp;this.accelerate = function() {
+                                        <br>&nbsp;&nbsp;&nbsp;&nbsp;console.log('This ' + this.model + ' is accelerating to 60mph.');
+                                        <br>&nbsp;&nbsp;}
+                                        </span>
+                                        <span class="violet">
+                                        <br>&nbsp;&nbsp;// Private member 
+                                        <br>&nbsp;&nbsp;const driver = 'Michael Knight';
+                                        </span>
+                                <br>};
+                            </code>
+                            <!-- <hr>
+                            <p>const kitt = new Car('Pontiac', 'Trans Am');
+                                <br>kitt.accelerate();
+                                <br>&nbsp;&nbsp;=> "This Trans Am is accellerating to 60mph."
+                            </p> -->
+                        </div>
+                        <!-- <div>
+                            <p>When the 'new' keyword is used to create an object from a constructor, the following things happen:</p>
+                            <ul>
+                                <li>An empty object is created</li>
+                                <li>The 'this' keyword is bound to this new object</li>
+                                <li>The new object is returned</li>
+                            </ul>
+                        </div> -->
+                        <hr>
+                        <!-- <div> -->
+                            <!-- &nbsp;&nbsp;circle3.constructor
+                            <br>&nbsp;&nbsp;(the above Circle constructor)
+                            <br>&nbsp;&nbsp;=> ƒ Circle(radius) {...} -->
+                        <!-- </div> -->
+                    </div>
+                </div>
+                <h5 class="text-center">There are constructors for all Javascript data types</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6 class='text-center'>Strings:</h6>
+                        <div class="code-wrapper">
+                            <code>
+                                &nbsp;&nbsp;let myString = 'This is a string';
+                                <br>&nbsp;&nbsp;let myConstructorString = new String ('This is also a string');
+                            </code>
+                            <br><br>&nbsp;&nbsp;myString.constructor
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;=> ƒ String() { [native code] }
+                            <br><br>&nbsp;&nbsp;myConstructorString.constructor
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;=> ƒ String() { [native code] }
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class='text-center'>Numbers:</h6>
+                        <div class="code-wrapper">
+                            <code>
+                                &nbsp;&nbsp;let myNumber = 8765309;
+                                <br>&nbsp;&nbsp;let myConstructorNumber = new Number (8765309);
+                            </code>
+                            <br><br>&nbsp;&nbsp;myNumber.constructor
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;=> ƒ Number() { [native code] }
+                            <br><br>&nbsp;&nbsp;myConstructorNumber.constructor
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;=> ƒ Number() { [native code] }
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <h6 class='text-center'>Functions:</h6>
+                        <div class="code-wrapper">
+                            <code>
+                                &nbsp;&nbsp;const myFunction = function (value) {
+                                    <br>&nbsp;&nbsp;&nbsp;&nbsp;console.log(value);
+                                <br>&nbsp;&nbsp;};
+                                <br><br>&nbsp;&nbsp;const myFunction = new Function ('value', `console.log(value);`);
+                            </code>
+                            <br><br>&nbsp;&nbsp;myFunction.constructor
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;=> ƒ Function() { [native code] }
+                            <br><br>&nbsp;&nbsp;myConstructorFunction.constructor
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;=> ƒ Function() { [native code] }            
+                        </div>
+                    </div>
+                </div>
+                <h6 class='text-center'>Because of these built in JS constructors, there are many functions and properties available for each data type.</h6>
+                <h6 class='text-center'>Example, for functions, we have the 'call' and 'apply' methods:</h6>
+                <div class="row">
+                    <div class="col-md-6">
+                            <!-- <div class="row">
+                                    <div class="col-md-6"> -->
+                        <div class="code-wrapper">
+                            <code>
+                                let <span class="orange">burgerKing</span> = {
+                                    <br>&nbsp;&nbsp;food: 'Whopper',
+                                    <span class="orange"><br>&nbsp;&nbsp;placeOrder:</span> function () {
+                                        <br>&nbsp;&nbsp;&nbsp;&nbsp;console.log("I'll have a " + this.food)
+                                    <br>&nbsp;&nbsp;}
+                                <br>};
+                                    <span class="orange"><br>&nbsp;&nbsp;orderDrink:</span> function (liquid) {
+                                        <br>&nbsp;&nbsp;&nbsp;&nbsp;console.log("I'll have a " + liquid + ' with my ' + this.food)
+                                    <br>&nbsp;&nbsp;}
+                                <br>};
+                            </code>
+                        </div>
+                        <!-- <div class="text-center">
+                            <p><span class="orange">burgerKing.placeOrder</span>();</p>
+                            <p>=> "I'll have a Whopper"</p>
+                        </div> -->
+                    </div>
+                    <div class="col-md-6">
+                        <div class="code-wrapper">
+                            <code>
+                                let <span class="violet">mcDonalds</span> = {
+                                    <br>&nbsp;&nbsp;food: 'Big Mac',
+                                    <br>&nbsp;&nbsp;<s><span class="violet">orderFood</span>:  <span class="orange">burgerKing.placeOrder</span></s>
+                                <br>};
+                            </code>
+                        </div>
+                    </div>
+                    <div class="text-center center">
+                        <p class="mtb-0">// if adding parameters, can add them after the 'this' reference</p>
+                        <p class="text-center mtb-0"><span class="orange">burgerKing.orderDrink</span>.call(<span class="violet">mcDonalds, 'Coke'</span>)</p>
+                        <p class="">=> "I'll have a Coke with my Big Mac"</p>
+                        <p class="mtb-0">// using an array to add parameters</p>
+                        <p class="text-center mtb-0"><span class="orange">burgerKing.orderDrink</span>.apply(<span class="violet">mcDonalds, ['Coke']</span>)</p>
+                        <p class="mtb-0">=> "I'll have a Coke with my Big Mac"</p>
+                    </div>
+                <!-- </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/app/js/constructors-intro.js"></script>
+</body>
+</html>

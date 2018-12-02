@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/app/styles/main.css">
+    <link rel="stylesheet" href="/app/styles/intro.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="text-center">Intro to Objects</h1>
+    <p class="text-center">Open console to view results</p>
+    <h3 class="text-center">Object Literal Notation</h3>
+    <div class="code-wrapper">
+        <code class="div-ctr">
+            const circle1 = {
+                <br>&nbsp;&nbsp;<span class="blue">//Properties - key value pairs inside objects</span>
+                <br><span class="blue">&nbsp;&nbsp;radius: 1,</span>
+                <br><span class="blue">&nbsp;&nbsp;location: {
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;x: 1,
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;y: 1
+                <br>&nbsp;&nbsp;},</span>
+                <br><br>&nbsp;&nbsp;<span class="orange">//Methods - functions inside objects
+                    <br>&nbsp;&nbsp;show: function () {
+                        <br>&nbsp;&nbsp;&nbsp;&nbsp;console.log('Showing an Object Literal Notation circle');
+                    <br>&nbsp;&nbsp;}
+                </span>
+            <br>};
+        </code> 
+        <h5>To loop through an object's key value pairs:</h5>
+        &nbsp;&nbsp;for (let key in circle1) {
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;console.log(key, circle1[key]);
+        <br>&nbsp;&nbsp;}
+        <br>&nbsp;&nbsp;=> radius 1
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;location {x: 1, y: 1}
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;show ƒ () { console.log('Showing an Object Literal Notation circle'); }
+        <h5>To collect all the keys of an object:</h5>
+        &nbsp;&nbsp;const keys = Object.keys(circle1);
+        <br>&nbsp;&nbsp;console.log(keys);
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;=> ["radius","location","show"']
+        <h5>To find if a property is in an object:</h5>
+        &nbsp;&nbsp;if ('radius' in circle1) {
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;console.log('Circle has a radius');
+        <br>&nbsp;&nbsp;}
+    </div>
+    <script src="/app/js/intro.js"></script>
+</body>
+</html>
