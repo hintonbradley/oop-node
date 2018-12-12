@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/app/styles/main.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="text-center">Property Attributes</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-center">All properties of objects have attributes attached to them.</p>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="code-wrapper">
+                            <code>
+                                let <span class="red">myCar</span> = {
+                                    <br>&nbsp;&nbsp; <span class="blue">make</span>: "Porche",
+                                    <br>&nbsp;&nbsp;model: "911"
+                                <br>};
+                            </code>
+                            <p>console.log(Object.getOwnPropertyDescriptor(<span class="red">myCar</span>, '<span class="blue">make</span>'));
+                            <br>&nbsp;&nbsp;=>
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;configurable: true
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;enumerable: true
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;value: "Porche"
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;writable: true</p>
+                            <h5>Even prototype properties have these attributes:</h5>
+                            <p>
+                                <br>&nbsp;&nbsp;let <span class='violet'>objectBase</span>  = Object.getPrototypeOf(<span class="red">myCar</span>);
+                                <br>&nbsp;&nbsp;let baseDescript = Object.getOwnPropertyDescriptor(<span class='violet'>objectBase</span>, 'toString');
+                                <br>&nbsp;&nbsp;console.log(baseDescript);
+                                <br>&nbsp;&nbsp;=>
+                                <br>&nbsp;&nbsp;&nbsp;&nbsp;configurable: true
+                                <br>&nbsp;&nbsp;&nbsp;&nbsp;enumerable: false
+                                <br>&nbsp;&nbsp;&nbsp;&nbsp;value: ƒ toString()
+                                <br>&nbsp;&nbsp;&nbsp;&nbsp;writable: true</p>
+                            </p>
+                        </div>
+                        <div>
+                                <dl>
+                                        <dt><code>configurable</code></dt>
+                                        <dd>Ability to delete the property.<br>
+                                        <strong>Defaults to <code>false</code>.</strong></dd>
+                                        <dt><code>enumerable</code></dt>
+                                        <dd>Basically, we can visibly loop over them.<br>
+                                        <strong>Defaults to <code>false</code>.</strong></dd>
+                                </dl>
+                                <dl>
+                                        <dt><code>value</code></dt>
+                                        <dd>The value associated with the property. Can be any valid JavaScript value (number, object, function, etc).<br>
+                                        <strong>Defaults to <a href="/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined" title="The global undefined property represents the primitive value undefined. It is one of JavaScript's primitive types."><code>undefined</code></a>.</strong></dd>
+                                        <dt><code>writable</code></dt>
+                                        <dd>Ability to change the value associated with the property may be changed</a>.<br>
+                                        <strong>Defaults to <code>false</code>.</strong></dd>
+                                       </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/app/js/intermediate/property-attributes.js"></script>
+</body>
+</html>

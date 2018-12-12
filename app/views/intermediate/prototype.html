@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/app/styles/main.css">
+    <link rel="stylesheet" href="/app/styles/intermediate/prototype.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="text-center">Prototype</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-center">A object always automatically inherits the properties and methods of it's parents, never from a child.</p>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row justify-content-center">
+                            <div class="col-4">
+                                <h3 class="text-center">Object Base</h3>
+                                <div class="code-wrapper">
+                                    <code>
+                                        {
+                                        <span class="blue">
+                                            <br>&nbsp;&nbsp;honk = function() {
+                                                <br>&nbsp;&nbsp;&nbsp;&nbsp;console.log('Beep beep!');
+                                            <br>&nbsp;&nbsp;}
+                                        </span>
+                                        <br>};
+                                    </code>
+                                </div>
+                                <img class="arrow" src="/app/img/red-arrow.png" alt="arrow">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-8">
+                                <h3 class="text-center">Constructor</h3>
+                                <div class="code-wrapper">
+                                    <code>
+                                        {
+                                        <span class="red">
+                                            <br>&nbsp;&nbsp;Properties and methods
+                                        </span>
+                                        <br>};
+                                    </code>
+                                </div>
+                                <img class="arrow" src="/app/img/red-arrow.png" alt="arrow">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-12">
+                                <h3 class="text-center">Car</h3>
+                                <div class="code-wrapper">
+                                    <code>
+                                        function Car(make, model) {
+                                            <br>&nbsp;&nbsp;this.make = make;
+                                            <br>&nbsp;&nbsp;this.model = model;
+                                            <br>&nbsp;&nbsp;this.accelerate = function() {
+                                                <br>&nbsp;&nbsp;&nbsp;&nbsp;console.log('This ' + this.model + ' is accelerating to 60mph.');
+                                                <br>&nbsp;&nbsp;}
+                                                <br>&nbsp;&nbsp;const driver = 'Michael Knight';
+                                        <br>};
+                                    </code>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bkgrd-blue br-10 p-20">
+                            <p><span class="grey">//Creating an instance of a Car</span>
+                            <br>const kitt = new Car('Pontiac','Trans Am');</p>
+                            <p><span class="grey">//Because objects inherit methods and properties from it's parent and never from it's child, this is why you can call kitt.accelerate() AND kitt.honk().</span>
+                            <br>kitt.accelerate();  
+                            <br>&nbsp;&nbsp;=>This Trans Am is accelerating to 60mph.
+                            <br>kitt.honk();
+                            <br>&nbsp;&nbsp;=> Beep beep!                              
+                            <br><br><span class="grey">//But you may <span class='red'>NOT</span> call kitt.__proto__.__proto__.accelerate()</span>
+                            <br>kitt.__proto__.__proto__.accelerate()
+                            <br><span class="text-danger">&nbsp;&nbsp;=> prototype.js:21 Uncaught TypeError: kitt.__proto__.__proto__.accelerate is not a function</span>
+
+                        </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/app/js/intermediate/prototype.js"></script>
+</body>
+</html>

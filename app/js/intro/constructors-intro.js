@@ -61,5 +61,4 @@ let mcDonalds = {
 }
 
 burgerKing.placeOrder.call(mcDonalds);
-burgerKing.placeOrder.apply(burgerKing);
 burgerKing.orderDrink.apply(mcDonalds, ['Coke'])

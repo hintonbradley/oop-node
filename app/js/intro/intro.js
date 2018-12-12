@@ -22,6 +22,6 @@ const keys = Object.keys(circle1);
 console.log('keys is: ',keys);
 
 // To find if a property is in an object:
-if ('radius' in circle3) {
+if ('radius' in circle1) {
     console.log('Circle has a radius');
 }

@@ -1,0 +1,7 @@
+img.arrow {
+    position: absolute;
+    top: 160px;
+    left: -102px;
+    z-index: 100;
+    width: 150px;
+}
