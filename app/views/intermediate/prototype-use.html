@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/app/styles/main.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand navbar-light bg-light">
+        <a class="navbar-brand" href="/">Home</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/constructor-prototypes">Prev</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/prototype-overwrite">Next</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">Why use Prototypes?</h1>
+                <h5 class="text-center">Let's find out by building a couple objects using a Constructor.</h5>
+                <div class="row justify-content-center">
+                    <div class="col-8">
+                        <h3 class="text-center mt-20"> Dog constructor</h3>
+                        <div class="code-wrapper">
+                            <code>
+                                const <span class="violet">Dog</span> = function (name)  {
+                                    <br>&nbsp;&nbsp;this.name = name;
+                                    <br>&nbsp;&nbsp;this.food = 'Alpo';
+                                    <br>&nbsp;&nbsp;this.eat = function() {
+                                        <br>&nbsp;&nbsp;&nbsp;&nbsp;console.log(this.name + "is eating " + this.food);
+                                        <br>&nbsp;&nbsp;}
+                                <br>};
+                            </code>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center mt-20">
+                    <div class="col-sm-6">
+                        <h3 class="text-center">Rover</h3>
+                        <div class="code-wrapper">
+                            <code>
+                                <br>&nbsp;&nbsp;const rover = new <span class="violet">Dog</span> ('Rover');
+                            </code>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <h3 class="text-center">Max</h3>
+                        <div class="code-wrapper">
+                            <code>
+                                <br>&nbsp;&nbsp;const max = new <span class="violet">Dog</span> ('Max');
+                            </code>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <h6>If we look at both of these instances, we see that they both have different names, the same food and and same eat method. </h6>
+                <div class="row justify-content-center mt-20">
+                    <div class="col-sm-6">
+                        <div class="code-wrapper">
+                            <code>
+                                <p>
+                                    console.log(rover)
+                                    <br>=> Dog
+                                    <br>eat: ƒ ()
+                                    <br>food: "Alpo"
+                                    <br>name: "Rover"
+                                    <br>__proto__: Object
+                                </p>
+                            </code>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="code-wrapper">
+                            <code>
+                                <p>
+                                    console.log(max)
+                                    <br>=> Dog
+                                    <br>eat: ƒ ()
+                                    <br>food: "Alpo"
+                                    <br>name: "Max"
+                                    <br>__proto__: Object
+                                </p>
+                            </code>
+                        </div>
+                    </div>
+                </div>
+                <h6>But let's say you want to change Rover's food. Now the food is different. You can change the properties of the two objects, but the methods will remain the same for both instances.</h6>
+                <div class="row justify-content-center mt-20">
+                    <div class="col-sm-6">
+                        <div class="code-wrapper">
+                            <code>
+                                <p>
+                                    console.log(rover)
+                                    <br>=> Dog
+                                    <br>eat: ƒ ()
+                                    <br>food: "<span class="red">Pedigree</span>"
+                                    <br>name: "Rover"
+                                    <br>__proto__: Object
+                                </p>
+                            </code>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="code-wrapper">
+                            <code>
+                                <p>
+                                    console.log(max)
+                                    <br>=> Dog
+                                    <br>eat: ƒ ()
+                                    <br>food: "Alpo"
+                                    <br>name: "Max"
+                                    <br>__proto__: Object
+                                </p>
+                            </code>
+                        </div>
+                    </div>
+                </div>
+                <h6>If we create 100 dogs using the constructor, we will have 100 of the same eat methods. We can fix this by removing the method from the Dog constructor...</h6>
+                <div class="row justify-content-center">
+                    <div class="col-8">
+                        <h3 class="text-center mt-20"> Dog constructor</h3>
+                        <div class="code-wrapper">
+                            <code>
+                                const <span class="violet">Dog</span> = function (name)  {
+                                    <br>&nbsp;&nbsp;this.name = name;
+                                    <br>&nbsp;&nbsp;this.food = 'Alpo';
+                                    
+                                <br>};
+                            </code>
+                        </div>
+                    </div>
+                </div>
+                <h6>...and adding it to the prototype.</h6>
+                <div class="row justify-content-center">
+                    <div class="col-8">
+                        <div class="code-wrapper">
+                            <code>
+                                <span class="violet">Dog</span>.prototype.eat = function() {
+                                    <br>&nbsp;&nbsp;console.log(this.name + " is now eating " + this.food);
+                                <br>};
+                            </code>
+                        </div>
+                    </div>
+                </div>
+                <h6>This way, the properties that could potentially be changed are saved on the <span class="blue">instance</span> and the methods that are constant for each instance are saved one time on the <span class="orange">prototype</span>.</h6>
+                <div class="row justify-content-center mt-20">
+                    <div class="col-sm-6">
+                            <div class="code-wrapper">
+                                <code>
+                                    <p>
+                                        console.log(rover)
+                                        <br>=> Dog
+                                        <span class="blue"><br>&nbsp;&nbsp;food: "Pedigree"
+                                        <br>&nbsp;&nbsp;name: "Max"</span> 
+                                        <br>&nbsp;&nbsp;__proto__:
+                                        <span class="orange"><br>&nbsp;&nbsp;&nbsp;&nbsp;eat: ƒ ()
+                                        <br>&nbsp;&nbsp;&nbsp;&nbsp;constructor: ƒ (name, food)
+                                        <br>&nbsp;&nbsp;&nbsp;&nbsp;__proto__: Object</span> 
+                                    </p>
+                                </code>
+                            </div>
+                        </div>
+                    <div class="col-sm-6">
+                        <div class="code-wrapper">
+                            <code>
+                                <p>
+                                    console.log(max)
+                                    <br>=> Dog
+                                    <span class="blue"><br>&nbsp;&nbsp;food: "Alpo"
+                                    <br>&nbsp;&nbsp;name: "Max"</span>
+                                    <br>&nbsp;&nbsp;__proto__:
+                                    <span class="orange"><br>&nbsp;&nbsp;&nbsp;&nbsp;eat: ƒ ()
+                                    <br>&nbsp;&nbsp;&nbsp;&nbsp;constructor: ƒ (name, food)
+                                    <br>&nbsp;&nbsp;&nbsp;&nbsp;__proto__: Object</span>
+                                </p>
+                            </code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/app/js/intermediate/prototype-use.js"></script>
+</body>
+</html>

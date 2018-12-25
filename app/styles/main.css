@@ -18,7 +18,7 @@ body {
     color: grey;
 }
 
-.blue { color: #8cb5c8;}
+.blue { color: blue;}
 .green { color: green; }
 .violet { color: violet; }
 .orange { color: #f8b366; }
@@ -81,6 +81,12 @@ li.no-point {
     width:  80%;
 }
 
+/* Index */
 .br-10 {
     border-radius: 5px;
+}
+
+.nav-page ul {
+    max-width: 200px;
+    margin: 0 auto;
 }

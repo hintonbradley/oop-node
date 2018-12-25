@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/app/styles/main.css">
+    <link rel="stylesheet" href="/app/styles/intermediate/prototype.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand navbar-light bg-light">
+        <a class="navbar-brand" href="/">Home</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/members">Prev</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/calling-super">Next</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <h1 class="text-center">Inheritence</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-center">Inheritance is the concept of one thing gaining the properties or behaviours of something else. You must use a special object called prototype which assigns properties to a type (such as Parallelogram). Only functions have a prototype, which is why you must create a function first.</p>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row justify-content-center">
+                            <div class="col-6">
+                                <div class="code-wrapper">
+                                    <h4 class="text-center mtb-0">Parallelogram</h4>
+                                    <p class="text-center">the <span class="violet">Square's </span><span class="red">Super</span> constructor</p>
+                                    <code>
+                                        <span class="blue">
+                                            function Parallelogram() {
+                                                <br>&nbsp;&nbsp;this.fourSides = true;
+                                                <br>&nbsp;&nbsp;this.oppositeEqualSides = true;
+                                                <br>&nbsp;&nbsp;this.oppositeAnglesEqual = true;
+                                            <br>};
+                                            <br><br>Parallelogram.prototype.countSides = function () {
+                                                <br>&nbsp;&nbsp;return 4;
+                                            <br>}
+                                        </span>
+                                    </code>
+                                </div>
+                                <img style="top: 267px; left: -80px;" class="arrow" src="/app/img/red-arrow.png" alt="arrow">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-8">
+                                <div class="code-wrapper">
+                                    <h4 class="text-center mtb-0">Square</h4>
+                                    <p class="text-center">a <span class="red">child</span> of the <span class="blue">Parallelogram</span> constructor</p>
+                                    <code>
+                                        <span class="violet">
+                                            function Square() {
+                                                <br>&nbsp;&nbsp;this.allSidesEqual = true;
+                                                <br>&nbsp;&nbsp;this.angleDegrees = 90;
+                                            <br>};
+                                        </span>
+                                    </code>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="br-10 p-20 mt-20">
+                            <p><span class="grey">//In order for the <span class="violet">Square</span> instances to inherit the <span class="blue">Parallelogram</span> prototype's properties and methods we do the following:</span>
+                            <br><span class="violet">Square</span>.prototype = Object.create(<span class="blue">Parallelogram</span>.prototype);
+                            <br><br><span class="grey">// <span class="red">NOTE!</span> Whenver you change an object's prototype, you must also change the constructor back to the original constructor.</span> 
+                            <br>Square.prototype.constructor = Square;
+                            <!-- <p><span class="grey">//Because objects inherit methods and properties from it's parent and never from it's child, this is why you can call kitt.accelerate() AND kitt.honk().</span> -->
+                            <br><br><span class="grey">//This will allow any new <span class="violet">Square</span> instance to inherit the <span class="blue">Parallelogram's</span> prototype methods and properties, but not the <span class="blue">Parallelogram's</span> instance properties/methods.</span>
+                            <br>let spongeBob = new <span class="violet">Square</span>(); 
+                            <br><br>spongeBob.countSides();
+                            <br>&nbsp;&nbsp;=> 4 <span class="grey">&nbsp;&nbsp;//because countSides is a prototype method</span>
+                            <br>spongeBob.fourSides;
+                            <br>&nbsp;&nbsp;=> undefined <span class="grey">&nbsp;&nbsp;//because fourSides is an instance property</span>
+                            <!-- <br>&nbsp;&nbsp;=>This Trans Am is accelerating to 60mph.
+                            <br>kitt.honk();
+                            <br>&nbsp;&nbsp;=> Beep beep!                              
+                            <br><br><span class="grey">//But you may <span class='red'>NOT</span> call kitt.__proto__.__proto__.accelerate()</span>
+                            <br>kitt.__proto__.__proto__.accelerate()
+                            <br><span class="text-danger">&nbsp;&nbsp;=> prototype.js:21 Uncaught TypeError: kitt.__proto__.__proto__.accelerate is not a function</span> -->
+
+                        </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/app/js/advanced/inheritence-intro.js"></script>
+</body>
+</html>

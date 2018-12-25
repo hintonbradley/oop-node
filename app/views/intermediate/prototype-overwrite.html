@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/app/styles/main.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand navbar-light bg-light">
+        <a class="navbar-brand" href="/">Home</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/prototype-use">Prev</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/members">Next</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">Overwriting methods using Prototype</h1>
+                <h5 class="text-center">Open console to view.</h5>
+                <div class="row justify-content-center">
+                    <div class="col-8">
+                        <h3 class="text-center mt-20"> Dog constructor</h3>
+                        <div class="code-wrapper">
+                            <code>
+                                const <span class="violet">Dog</span> = function (name)  {
+                                    <br>&nbsp;&nbsp;this.name = name;
+                                    <br>&nbsp;&nbsp;this.food = 'Alpo';
+                                    <br>&nbsp;&nbsp;this.eat = function() {
+                                        <br>&nbsp;&nbsp;&nbsp;&nbsp;console.log(this.name + "is eating " + this.food);
+                                        <br>&nbsp;&nbsp;}
+                                <br>};
+                                <hr>
+                                <br><br><h5>Before</h5> 
+                                <br>//before changing <span class="violet">Dog</span>.prototype.<span class="red">toString</span> method, rover.toString() is:
+                                <br>=>[object Object]
+
+                                <br><br><span class="violet">Dog</span>.prototype.<span class="red">toString</span> = function() {
+                                    return "This built in Javascript method has been altered"
+                                };
+                                <hr>
+                                <br><br><h5>After</h5>
+                                <br>//After changing <span class="violet">Dog</span>.prototype.<span class="red">toString</span> method, rover.toString() is:
+                                <br>=> "This built in Javascript method has been altered"
+                                <p><br>The prototype method will be used instead of the built-in Javascript method (on the base object) because the prototype is more accessible than the base object.</p>
+                            </code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/app/js/intermediate/prototype-overwrite.js"></script>
+</body>
+</html>

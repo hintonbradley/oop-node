@@ -47,6 +47,38 @@ app.get('/property-attributes', function (req, res) {
     res.sendFile(__dirname + '/app/views/intermediate/property-attributes.html');
 });
 
+app.get('/constructor-prototypes', function (req, res) {
+    res.sendFile(__dirname + '/app/views/intermediate/constructor-prototypes.html');
+});
+
+app.get('/prototype-use', function (req, res) {
+    res.sendFile(__dirname + '/app/views/intermediate/prototype-use.html');
+});
+
+app.get('/prototype-overwrite', function (req, res) {
+    res.sendFile(__dirname + '/app/views/intermediate/prototype-overwrite.html');
+});
+
+app.get('/members', function (req, res) {
+    res.sendFile(__dirname + '/app/views/intermediate/members.html');
+});
+
+app.get('/inheritence-intro', function (req, res) {
+    res.sendFile(__dirname + '/app/views/advanced/inheritence-intro.html');
+});
+
+app.get('/calling-super', function (req, res) {
+    res.sendFile(__dirname + '/app/views/advanced/calling-super.html');
+});
+
+app.get('/intermediate-inheritence-function', function (req, res) {
+    res.sendFile(__dirname + '/app/views/advanced/intermediate-inheritence-function.html');
+});
+
+app.get('/method-override', function (req, res) {
+    res.sendFile(__dirname + '/app/views/advanced/method-override.html');
+});
+
 app.get('/', (req, res) => {
     console.log('Server is listening');
     res.sendFile(__dirname + '/index.html');

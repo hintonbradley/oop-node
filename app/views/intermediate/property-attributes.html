@@ -9,14 +9,27 @@
     <title>Document</title>
 </head>
 <body>
+    <nav class="navbar navbar-expand navbar-light bg-light">
+        <a class="navbar-brand" href="/">Home</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/prototype">Prev</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/constructor-prototypes">Next</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <h1 class="text-center">Property Attributes</h1>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <p class="text-center">All properties of objects have attributes attached to them.</p>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="code-wrapper">
+                            <h5 class="text-center"> <strong>All </strong>properties of objects have attributes attached to them.</h5>
                             <code>
                                 let <span class="red">myCar</span> = {
                                     <br>&nbsp;&nbsp; <span class="blue">make</span>: "Porche",
@@ -29,7 +42,8 @@
                             <br>&nbsp;&nbsp;&nbsp;&nbsp;enumerable: true
                             <br>&nbsp;&nbsp;&nbsp;&nbsp;value: "Porche"
                             <br>&nbsp;&nbsp;&nbsp;&nbsp;writable: true</p>
-                            <h5>Even prototype properties have these attributes:</h5>
+                            <hr>
+                            <h5 class="text-center">Even prototype properties have these attributes:</h5>
                             <p>
                                 <br>&nbsp;&nbsp;let <span class='violet'>objectBase</span>  = Object.getPrototypeOf(<span class="red">myCar</span>);
                                 <br>&nbsp;&nbsp;let baseDescript = Object.getOwnPropertyDescriptor(<span class='violet'>objectBase</span>, 'toString');
@@ -42,22 +56,50 @@
                             </p>
                         </div>
                         <div>
-                                <dl>
-                                        <dt><code>configurable</code></dt>
-                                        <dd>Ability to delete the property.<br>
-                                        <strong>Defaults to <code>false</code>.</strong></dd>
-                                        <dt><code>enumerable</code></dt>
-                                        <dd>Basically, we can visibly loop over them.<br>
-                                        <strong>Defaults to <code>false</code>.</strong></dd>
-                                </dl>
-                                <dl>
-                                        <dt><code>value</code></dt>
-                                        <dd>The value associated with the property. Can be any valid JavaScript value (number, object, function, etc).<br>
-                                        <strong>Defaults to <a href="/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined" title="The global undefined property represents the primitive value undefined. It is one of JavaScript's primitive types."><code>undefined</code></a>.</strong></dd>
-                                        <dt><code>writable</code></dt>
-                                        <dd>Ability to change the value associated with the property may be changed</a>.<br>
-                                        <strong>Defaults to <code>false</code>.</strong></dd>
-                                       </dl>
+                            <dl>
+                                <dt><code>configurable</code></dt>
+                                <dd>Ability to delete the property.<br></dd>
+                                <dt><code>enumerable</code></dt>
+                                <dd>Basically, we can visibly loop over them.<br></dd>
+                                <!-- </dl>
+                                <dl> -->
+                                <dt><code>value</code></dt>
+                                <dd>The value associated with the property. Can be any valid JavaScript value (number, object, function, etc).<br></dd>
+                                <dt><code>writable</code></dt>
+                                <dd>Ability to change the value associated with the property may be changed</a>.<br></dd>
+                            </dl>
+                        </div>
+                        <div class="code-wrapper">
+                            <code>
+                                let muppets = {
+                                    <br>&nbsp;&nbsp;<span class="red">frog</span>: "Kermit",
+                                    <br>&nbsp;&nbsp;<span class="blue">bear</span>: "Fozzie",
+                                    <br>&nbsp;&nbsp;<span class="violet">dog</span>: "Ralph"
+                                <br>};
+                                <hr>
+                                //To prevent the ability to change the value of a variable:
+                                <br>Object.defineProperty(muppets, "<span class="red">frog</span>", {
+                                    <br>&nbsp;&nbsp;writable: false
+                                <br>})
+                                <br>muppets.<span class="red">frog</span> = 'scooter';
+                                <br>console.log(muppets.<span class="red">frog</span>)
+                                <br>&nbsp;&nbsp;=> Kermit
+                                <hr>
+                                //To prevent the ability to enumerate over a key-value pair:
+                                <br>Object.defineProperty(muppets, "<span class="blue">bear</span>", {
+                                    <br>&nbsp;&nbsp;enumerable: false
+                                <br>})
+                                <br>console.log(Object.keys(muppets));
+                                <br>&nbsp;&nbsp;=> ["frog", "dog"]
+                                <hr>
+                                //To prevent the ability to delete a key-value pair:
+                                <br>Object.defineProperty(muppets, "<span class="violet">dog</span>", {
+                                    <br>&nbsp;&nbsp;configurable: false
+                                <br>})
+                                <br>delete muppets.<span class="violet">dog</span>;
+                                <br>console.log(muppets)
+                                <br>&nbsp;&nbsp;=> {frog: "Kermit", <span class="violet">dog</span>: "Ralph", bear: "Fozzie"}
+                            </code>
                         </div>
                     </div>
                 </div>
